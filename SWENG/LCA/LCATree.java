@@ -14,31 +14,57 @@ public class LCATree {
 
     Node root;
     Node findLCA(int value1, int value2){
-        return findLCA(root, value1, value2);
+        if(search(root, value1) == false){
+            return null;
+        }
+        if(search(root, value2) == false){
+            return null;
+        }
+        if(search(root, value1) == true && search(root, value2) == true) {
+            return findLCA(root, value1, value2);
+        }
+        else{
+            return null;
+        }
     }
+
+    public boolean search(Node root, int key){
+        if(root == null){
+            return false;
+        }
+        if(key < root.data){
+            search(root.left, key);
+        }
+        if(key > root.data) {
+            search(root.right, key);
+        }
+        return true;
+    }
+
 
     Node findLCA(Node node, int val1, int val2){
         // check for null node
         if (node == null) {
             return null;
         }
-        //check if either input are the root node
-        if (node.data == val1 || node.data == val2) {
-            return node;
+
+            //check if either input are the root node
+            if (node.data == val1 || node.data == val2) {
+                return node;
+            }
+            // Look for keys in left and right subtrees
+            Node left_lca = findLCA(node.left, val1, val2);
+            Node right_lca = findLCA(node.right, val1, val2);
+
+
+            if (left_lca != null && right_lca != null) {
+                return node;
+            }
+
+            return (left_lca != null) ? left_lca : right_lca;
         }
-        // Look for keys in left and right subtrees
-        Node left_lca = findLCA(node.left, val1, val2);
-        Node right_lca = findLCA(node.right, val1, val2);
 
-
-        if (left_lca!=null && right_lca!=null) {
-            return node;
-        }
-
-        return (left_lca != null) ? left_lca : right_lca;
-    }
-
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         //create and fill tree
         LCATree tree = new LCATree();
         tree.root = new Node(1);
@@ -53,5 +79,5 @@ public class LCATree {
         System.out.println("LCA for 8 and 9 is " + tree.findLCA(8,9).data);
         System.out.println("LCA for 2 and 15 is " + tree.findLCA(2,15).data);
 
-    }
+    }*/
 }
