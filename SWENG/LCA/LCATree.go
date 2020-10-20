@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node struct{
 	val int
@@ -8,20 +10,59 @@ type Node struct{
 	right *Node
 }
 
-func LowestCommonAncestor(root *Node, val1 int, val2 int) int{
+
+func newNode(val int, left *Node, right *Node) *Node{
+	return &Node{
+		val: val,
+		left : left,
+		right : right,
+	}
+}
+
+func LCA(root *Node, val1 int, val2 int) *Node{
+	if root == nil {
+		return newNode(-99999, nil,nil)
+	}
+	if search(root, val1) == false{
+		return newNode(-99999, nil,nil)
+	}
+	if search(root, val2) == false{
+		return newNode(-99999, nil,nil)
+	}
+	if search(root, val1) == true && search(root, val2) == true{
+		return LowestCommonAncestor(root, val1, val2)
+	}
+
+	return nil
+}
+
+func search(root *Node, key int) bool{
 	if root == nil{
-		return -1
+		return false
+	}
+	if key < root.val {
+		search(root.left, key)
+	}
+	if key > root.val{
+		search(root.right, key)
+	}
+	return true
+}
+
+func LowestCommonAncestor(root *Node, val1 int, val2 int) *Node{
+	if root == nil {
+		return nil
 	}
 
 	if val1 > root.val && val2 > root.val{
 		return LowestCommonAncestor(root.right, val1, val2)
 	}
 
-	if val1 < root.val && val2 < root.val{
+	if val1 < root.val && val2 < root.val {
 		return LowestCommonAncestor(root.left, val1, val2)
 	}
 
-	return root.val
+	return root
 }
 
 func main(){
@@ -37,13 +78,13 @@ func main(){
 	root.right.right = &Node{200, nil, nil}
 
 	var result = LowestCommonAncestor(&root, 10, 80)
-	fmt.Println("LAC is", result)
+	fmt.Println("LAC of 10 and 80 is", result.val)
 
 	var result2 = LowestCommonAncestor(&root, 30, 200)
-	fmt.Println("LAC is", result2)
+	fmt.Println("LAC of 30 and 200 is", result2.val)
 
 	var result3 = LowestCommonAncestor(&root, 10, 30)
-	fmt.Println("LCA is", result3)
+	fmt.Println("LCA of 10 and 30 is", result3.val)
 
 }
 
