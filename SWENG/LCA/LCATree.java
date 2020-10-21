@@ -13,6 +13,7 @@ class Node{
 public class LCATree {
 
     Node root;
+
     Node findLCA(int value1, int value2){
         if(search(root, value1) == false){
             return null;
@@ -28,17 +29,19 @@ public class LCATree {
         }
     }
 
-    public boolean search(Node root, int key){
+    boolean search(Node root, int key){
         if(root == null){
             return false;
         }
-        if(key < root.data){
-            search(root.left, key);
+        if(root.data == key){
+            return true;
         }
-        if(key > root.data) {
-            search(root.right, key);
+        boolean result = (search(root.left, key));
+        if(result){
+            return true;
         }
-        return true;
+        boolean result2 = search(root.right, key);
+        return result2;
     }
 
 
