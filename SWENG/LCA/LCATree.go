@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 type Node struct{
 	val int
 	left *Node
@@ -21,32 +17,35 @@ func newNode(val int, left *Node, right *Node) *Node{
 
 func LCA(root *Node, val1 int, val2 int) *Node{
 	if root == nil {
-		return newNode(-99999, nil,nil)
+		return newNode(-999999, nil, nil)
 	}
 	if search(root, val1) == false{
-		return newNode(-99999, nil,nil)
+		return newNode(-999999, nil, nil)
 	}
 	if search(root, val2) == false{
-		return newNode(-99999, nil,nil)
+		return newNode(-999999, nil, nil)
 	}
 	if search(root, val1) == true && search(root, val2) == true{
 		return LowestCommonAncestor(root, val1, val2)
 	}
 
-	return nil
+	return newNode(-999999, nil, nil)
 }
 
 func search(root *Node, key int) bool{
 	if root == nil{
 		return false
 	}
-	if key < root.val {
-		search(root.left, key)
+	if root.val == key{
+		return true
 	}
-	if key > root.val{
-		search(root.right, key)
+
+	result := search(root.left, key)
+	if result{
+		return true
 	}
-	return true
+	result2 := search(root.right, key)
+	return result2
 }
 
 func LowestCommonAncestor(root *Node, val1 int, val2 int) *Node{
@@ -65,7 +64,7 @@ func LowestCommonAncestor(root *Node, val1 int, val2 int) *Node{
 	return root
 }
 
-func main(){
+/*func main(){
 
 	root := Node{100, nil, nil}
 	root.left = &Node{50, nil, nil}
@@ -86,5 +85,5 @@ func main(){
 	var result3 = LowestCommonAncestor(&root, 10, 30)
 	fmt.Println("LCA of 10 and 30 is", result3.val)
 
-}
+}*/
 
