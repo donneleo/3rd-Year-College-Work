@@ -42,7 +42,6 @@ remove(f0(A), X) :- remove(A, X).
 % test add inputting numbers N1 and N2
 testAdd(N1,N2,T1,T2,Sum,SumT) :- numb2pterm(N1,T1), numb2pterm(N2,T2),
 add(T1,T2,SumT), pterm2numb(SumT,Sum).
-3
 % test mult inputting numbers N1 and N2
 testMult(N1,N2,T1,T2,N1N2,T1T2) :- numb2pterm(N1,T1), numb2pterm(N2,T2),
 mult(T1,T2,T1T2), pterm2numb(T1T2,N1N2).
