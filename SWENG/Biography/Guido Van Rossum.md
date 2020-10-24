@@ -1,6 +1,6 @@
-#Software Engineering Assignment
+# Software Engineering Assignment
 
-##Biography of Guido van Rossum – Creator of Python
+## Biography of Guido van Rossum – Creator of Python
 
 
 Born in Haarlem, Netherlands in 1956, Guido Van Rossum is the software engineer behind one of the world’s most popular programming languages, Python. He studied Computer Science in the University of Amsterdam, graduating with a master’s degree in 1982. 
@@ -25,7 +25,7 @@ The effects of Van Rossum’s yuletide boredom will be felt for as long as we us
 
 
 
-##Bibliography
+## Bibliography
 
 Van Rossum, G., 1996. Foreword For "Programming Python" (1St Ed.). [online] Python.org. Available at: <https://www.python.org/doc/essays/foreword/> [Accessed 17 October 2020].
 
