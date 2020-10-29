@@ -5,86 +5,58 @@ import static org.junit.Assert.*;
 
 public class DAGTest {
 
-    DAG test = new DAG(10);
-    DAG test2 = new DAG(5);
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDAG(){
-        DAG fakeDAG = new DAG(-5);
-    }
-
-    @Test
-    public void testAddEdge(){
-        buildAnotherGraph();
-        test2.addEdge(2,3);
-        assertEquals("Number of edges in this graph is now 2", 2, test2.edges());
-        test2.addEdge(2,4);
-        assertEquals("Number of edges in the DAG is now 3", 3, test2.edges());
-        test2.addEdge(-5,-5);
-        assertEquals("Number of edges has not changed as -5 is invalid", 3, test2.edges());
-    }
-
-    @Test
-    public void testVertices(){
-        buildGraph();
-        assertEquals("DAG has 10 vertices", 10, test.vertices());
-    }
-
-
-    @Test
-    public void test_number_edges_out(){
-        buildGraph();
-        assertEquals("Vertex 5 has 3 edges out", 3, test.number_edges_out(5));
-        assertEquals("Vertex 1 has 2 edges out", 2, test.number_edges_out(1));
-        assertEquals("Has no nodes out. Invalid input", -1, test.number_edges_out(-5));
-    }
-
-    @Test
-    public void test_number_edges_in(){
-        buildGraph();
-        assertEquals("Vertex 6 has 2 edges coming in", 2, test.numbers_edges_in(6));
-        assertEquals("Vertex 1 has 0 edges coming in", 0, test.numbers_edges_in(1));
-        assertEquals("Vertex 2 has 1 edges coming in", 1, test.numbers_edges_in(2));
-        assertEquals("Has no nodes in. Invalid Input", -1, test.numbers_edges_in(-5));
-    }
-
-    @Test
-    public void testNumber_connections(){
-        buildGraph();
-        buildAnotherGraph();
-
-        assertArrayEquals(new int[]{6,8,9}, test.number_connections(5));
-        assertArrayEquals(new int[]{2}, test2.number_connections(1));
-        assertArrayEquals(null, test.number_connections(-5));
-    }
-
     @Test
     public void testFindLCA(){
-        buildGraph();
-        buildAnotherGraph();
 
-        assertEquals("LCA of vertices 6 and 9 is 5", 5, test.findLCA(6,9));
+        DAG newDAG = new DAG();
+        newDAG.root = new dagNode(1);
+        dagNode r2 = new dagNode(2);
+        dagNode r3 = new dagNode(3);
+        dagNode r4 = new dagNode(4);
+        dagNode r5 = new dagNode(5);
+        dagNode r6 = new dagNode(6);
+
+        dagNode[] rootout = new dagNode[4];
+        rootout[0] = r2;rootout[1] = r3;rootout[2] = r4;rootout[3] = r5;
+
+        dagNode[] r2out = new dagNode[1];
+        r2out[0] = r4;
+        dagNode[] r2in = new dagNode[1];
+        r2in[0] = newDAG.root;
+
+        dagNode[] r3out = new dagNode[2];
+        r3out[0] = r4;r3out[1] = r5;
+        dagNode[] r3in = new dagNode[1];
+        r3in[0] = newDAG.root;
+
+        dagNode[] r4out = new dagNode[1];
+        r4out[0] = r5;
+        dagNode[] r4in = new dagNode[3];
+        r4in[0] = newDAG.root;r4in[1] = r2; r4in[2] = r3;
+
+        dagNode[] r5in = new dagNode[3];
+        r5in[0] = newDAG.root;r5in[1] = r3;r5in[2] = r4;
+
+        dagNode[] r6in = new dagNode[1];
+        r6in[0] = r4;
+
+        newDAG.addEdgesOut(newDAG.root, rootout);
+        newDAG.addEdgesOut(r2, r2out);
+        newDAG.addEdgesIn(r2, r2in);
+        newDAG.addEdgesOut(r3, r3out);
+        newDAG.addEdgesIn(r3, r3in);
+        newDAG.addEdgesOut(r4, r4out);
+        newDAG.addEdgesIn(r4, r4in);
+        newDAG.addEdgesIn(r5, r5in);
+        newDAG.addEdgesIn(r6, r6in);
+
+
+        assertEquals("", 3, newDAG.findLCA(newDAG.root, r5, r4));
+        assertEquals("", 1, newDAG.findLCA(newDAG.root, r4, r3));
+        assertEquals("", -1, newDAG.findLCA(null, r4, r6));
+        assertEquals("", 1, newDAG.findLCA(newDAG.root, newDAG.root, r2));
+        assertEquals("", 4, newDAG.findLCA(newDAG.root, r6, r5));
+        assertEquals("", 5, newDAG.findLCA(newDAG.root, r5, r5));
     }
 
-
-    public void buildGraph(){
-        test.addEdge(0,1);
-        test.addEdge(1,2);
-        test.addEdge(2,3);
-        test.addEdge(3,4);
-        test.addEdge(4,5);
-        test.addEdge(5,6);
-        test.addEdge(6,7);
-        test.addEdge(7,8);
-        test.addEdge(8,9);
-        test.addEdge(1,4);
-        test.addEdge(2,7);
-        test.addEdge(4,6);
-        test.addEdge(5,9);
-        test.addEdge(5,8);
-    }
-
-    public void buildAnotherGraph(){
-        test2.addEdge(1,2);
-    }
 }
