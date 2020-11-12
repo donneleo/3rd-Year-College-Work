@@ -22,8 +22,12 @@ While the two functions perform the same task, the physical number of lines make
 
 There are of course tools that exist that aid in the counting of these SLOC. In 2004, there were “at least 75 commercial software cost-estimating tools” (Jones, 2004). Again, however, these tools count the lines, and not the *importance* of the lines written for the programmes. Think for example, of writing the code for accepting payment on an e-commerce site. The code written for this function will most likely be less than that the of the whole site. So, by having the tool say that a particular engineer has written a proportionally small X% of code for the whole store, the code written is an integral piece to the system. 
 
+Another method which has been used before to measure the work of a software engineer is the number of commits they have to their repository of work. While this, again, can be a reflection of how often the engineer works, or how consistently they commit code into a project, this again is a flawed method of measurement. Any minute change to a piece of code needs to be committed to the repository in order to become a part of the project. So, while an engineer may be committing on a consistent basis, many commits may only be for small spelling errors, rather than meaningful contributions to a project.
+
 Some believe that the irrelevance of measuring metrics is due in large part to how little relevance they have based on industry needs. The irrelevance here is due to two main factors:
+
 •	Irrelevance of Scope – Many of the metrics used to measure software “can only ever be applied/computed for small programs, whereas all the reasonable objectives for applying metrics are relevant primarily for large systems” (Fenton & Martin, 2007)
+
 •	Irrelevance of Content – The metrics that academics are using to measure software engineering are very often not in line with the metrics used within the industry and are therefore redundant.
 
 In recent years, many products have been created to monitor the work, efficiency and general well-being of software engineers. These tools come with a myriad of benefits and faults. 
