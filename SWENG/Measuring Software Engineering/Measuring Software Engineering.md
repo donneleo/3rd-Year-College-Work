@@ -5,7 +5,7 @@
 
 In this paper, we will explore some of the new technologies and methodologies which are being used to measure software engineering, the platforms being used to measure and the ethical aspects of using some of these technologies.
 
-## Method of yesteryear
+## Methods of yesteryear
 
 Counting the number of lines of code is a method that has been employed for many years but carries with it many flaws. “Source Lines of Code (SLOC or LOC) is one of the most widely used sizing metric in industry and literature” (Nguyen, et.al, 2007). However, there is often confusion regarding what constitutes a “source line of code”.  Measuring engineers on the number of lines od code they write can lead to serious issues of inefficiency. For example:
 
