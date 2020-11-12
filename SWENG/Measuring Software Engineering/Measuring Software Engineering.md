@@ -18,7 +18,7 @@ is correct and is equivalent to four physical SLOC. However, this simple stateme
 
     if(num%2 ==0) print(“Number is Even.”);
 
-While the two functions perform the same task, the physical number of lines makes the first piece of code less efficient. By measuring software engineers on the number of SLOC in their systems, it promotes the use of inefficient, unnecessarily long code, which, when applied to systems of a massive size, can lead to complications when trying to debug.  Another issue with counting SLOC, especially in the present day with new languages, such as Python, which can perform operations in fewer lines of code, is that programmers will be swayed away from using these more efficient languages. The following piece of code reverses a string in Java, containg nineteen physical SLOC.
+While the two functions perform the same task, the physical number of lines makes the first piece of code less efficient. By measuring software engineers on the number of SLOC in their systems, it promotes the use of inefficient, unnecessarily long code, which, when applied to systems of a massive size, can lead to complications when trying to debug.  Another issue with counting SLOC, especially in the present day with new languages, such as Python, which can perform operations in fewer lines of code, is that programmers will be swayed away from using these more efficient languages. The following piece of code reverses a string in Java,taken from GeeksForGeeks.com, containg nineteen physical SLOC.
 
     // Java program to ReverseString using ByteArray.
     import java.lang.*;
@@ -29,7 +29,7 @@ While the two functions perform the same task, the physical number of lines make
     class ReverseString {
         public static void main(String[] args)
         {
-            String input = "GeeksforGeeks";
+            String input = "GeeksForGeeks";
  
             // getBytes() method to convert string
             // into bytes[].
