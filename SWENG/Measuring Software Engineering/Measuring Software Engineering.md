@@ -18,7 +18,38 @@ is correct and is equivalent to four physical SLOC. However, this simple stateme
 
     if(num%2 ==0) print(“Number is Even.”);
 
-While the two functions perform the same task, the physical number of lines makes the first piece of code less efficient. By measuring software engineers on the number of SLOC in their systems, it promotes the use of inefficient, unnecessarily long code, which, when applied to systems of a massive size, can lead to complications when trying to debug.  Another issue with counting SLOC, especially in the present day with new languages, such as Python, which can perform operations in fewer lines of code, is that programmers will be swayed away from using these more efficient languages. 
+While the two functions perform the same task, the physical number of lines makes the first piece of code less efficient. By measuring software engineers on the number of SLOC in their systems, it promotes the use of inefficient, unnecessarily long code, which, when applied to systems of a massive size, can lead to complications when trying to debug.  Another issue with counting SLOC, especially in the present day with new languages, such as Python, which can perform operations in fewer lines of code, is that programmers will be swayed away from using these more efficient languages. The following piece of code reverses a string in Java, containg nineteen physical SLOC.
+
+    // Java program to ReverseString using ByteArray.
+    import java.lang.*;
+    import java.io.*;
+    import java.util.*;
+ 
+    // Class of ReverseString
+    class ReverseString {
+        public static void main(String[] args)
+        {
+            String input = "GeeksforGeeks";
+ 
+            // getBytes() method to convert string
+            // into bytes[].
+            byte[] strAsByteArray = input.getBytes();
+ 
+            byte[] result = new byte[strAsByteArray.length];
+ 
+            // Store result in reverse order into the
+            // result byte[]
+            for (int i = 0; i < strAsByteArray.length; i++)
+            result[i] = strAsByteArray[strAsByteArray.length - i - 1];
+ 
+            System.out.println(new String(result));
+        }
+    }
+    
+Meanwhile the same function can be carried in Python Programming Language in a much more efficient way, using only two pyhsical SLOC:
+
+    txt = "GeeksforGeeks"[::-1]
+    print(txt)
 
 There are of course tools that exist that aid in the counting of these SLOC. In 2004, there were “at least 75 commercial software cost-estimating tools” (Jones, 2004). Again, however, these tools count the lines, and not the *importance* of the lines written for the programmes. Think for example, of writing the code for accepting payment on an e-commerce site. The code written for this function will most likely be less than that the of the whole site. So, by having the tool say that a particular engineer has written a proportionally small X% of code for the whole store, the code written is an integral piece to the system. 
 
