@@ -26,9 +26,9 @@ Another method which has been used before to measure the work of a software engi
 
 Some believe that the irrelevance of measuring metrics is due in large part to how little relevance they have based on industry needs. The irrelevance here is due to two main factors:
 
-•	Irrelevance of Scope – Many of the metrics used to measure software “can only ever be applied/computed for small programs, whereas all the reasonable objectives for applying metrics are relevant primarily for large systems” (Fenton & Martin, 2007)
+**•	Irrelevance of Scope** – Many of the metrics used to measure software “can only ever be applied/computed for small programs, whereas all the reasonable objectives for applying metrics are relevant primarily for large systems” (Fenton & Martin, 2007)
 
-•	Irrelevance of Content – The metrics that academics are using to measure software engineering are very often not in line with the metrics used within the industry and are therefore redundant.
+**•	Irrelevance of Content** – The metrics that academics are using to measure software engineering are very often not in line with the metrics used within the industry and are therefore redundant.
 
 In recent years, many products have been created to monitor the work, efficiency and general well-being of software engineers. These tools come with a myriad of benefits and faults. 
 
