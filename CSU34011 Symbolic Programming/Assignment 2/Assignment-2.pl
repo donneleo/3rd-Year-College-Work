@@ -31,4 +31,53 @@ pet(zebra) --> [zebra].
 
 
 %Question 3
+%Part 1
+accept(L) :- steps(q0,L,F), final(F).
+steps(Q,[],Q).
+steps(Q,[H|T],Q2) :- tran(Q,H,Qn), steps(Qn,T,Q2).
+
+tran(q0, 0, q0).
+tran(q0, 1, q0).
+tran(q0, 0, q1).
+tran(q0, 1, q1).
+
+tran(q1, 1, q2).
+tran(q2, 0, q3).
+tran(q2, 1, q3).
+tran(q3, 0, q4).
+tran(q3, 1, q4).
+final(q4).
+
+%Part 2
+
+q0 --> [0], q0.
+q0 --> [1], q0.
+q0 --> [0], q1.
+q0 --> [1], q1.
+    
+  
+q1 --> [1], q2.
+q2 --> [0], q3.
+q2 --> [1], q3.
+q3 --> [0], q4.
+q3 --> [1], q4.
+q4 --> [].
+
+%Part 3
+
+l3(String, Numeral) :- accept(String), numeral(Numeral).
+
+numeral(0).
+numeral(succ(X)) :- numeral(X).
+
+
+
+
+
+
+
+
+
+    
+    
 
